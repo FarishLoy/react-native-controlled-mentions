@@ -152,19 +152,36 @@ const MentionInput: FC<MentionInputProps> = (
           {...Platform.OS === 'web' ? {selection} : {}}
           onChangeText={onChangeInput}
           onSelectionChange={handleSelectionChange}
-        />
-        {/* <Text style={{position: 'absolute', paddingTop: Platform.OS === 'web' ? 0 : 5, ...textInputProps.style, ...overlayContainerStyle}} pointerEvents={'none'}>
-          {parts.map(({text, partType, data}, index) => partType ? (
-            <Text
-              key={`${index}-${data?.trigger ?? 'pattern'}`}
-              style={partType.textStyle ?? defaultMentionTextStyle}
-            >
-              {text}
+        >
+          {Platform.OS !== 'web' && (
+            <Text>
+              {parts.map(({text, partType, data}, index) => partType ? (
+                <Text
+                  key={`${index}-${data?.trigger ?? 'pattern'}`}
+                  style={partType.textStyle ?? defaultMentionTextStyle}
+                >
+                  {text}
+                </Text>
+              ) : (
+                <Text key={index}>{text}</Text>
+              ))}
             </Text>
-          ) : (
-            <Text key={index}>{text}</Text>
-          ))}
-        </Text> */}
+          )}
+        </TextInput>
+        {false && Platform.OS === 'web' && (/** @ts-expect-error */
+          <Text style={{position: 'absolute', paddingTop: Platform.OS === 'web' ? 0 : 5, ...textInputProps.style, ...overlayContainerStyle}} pointerEvents={'none'}>
+            {parts.map(({text, partType, data}, index) => partType ? (
+              <Text
+                key={`${index}-${data?.trigger ?? 'pattern'}`}
+                style={partType.textStyle ?? defaultMentionTextStyle}
+              >
+                {text}
+              </Text>
+            ) : (
+              <Text key={index}>{text}</Text>
+            ))}
+          </Text>
+        )}
       </View>
       {(partTypes
         .filter(one => (
