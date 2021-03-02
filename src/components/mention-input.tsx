@@ -153,8 +153,7 @@ const MentionInput: FC<MentionInputProps> = (
           onChangeText={onChangeInput}
           onSelectionChange={handleSelectionChange}
         />
-        {/** @ts-expect-error */}
-        <Text style={{position: 'absolute', paddingTop: Platform.OS === 'web' ? 0 : 5, ...textInputProps.style, ...overlayContainerStyle}} pointerEvents={'none'}>
+        {/* <Text style={{position: 'absolute', paddingTop: Platform.OS === 'web' ? 0 : 5, ...textInputProps.style, ...overlayContainerStyle}} pointerEvents={'none'}>
           {parts.map(({text, partType, data}, index) => partType ? (
             <Text
               key={`${index}-${data?.trigger ?? 'pattern'}`}
@@ -165,7 +164,7 @@ const MentionInput: FC<MentionInputProps> = (
           ) : (
             <Text key={index}>{text}</Text>
           ))}
-        </Text>
+        </Text> */}
       </View>
       {(partTypes
         .filter(one => (
