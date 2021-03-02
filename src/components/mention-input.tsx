@@ -146,14 +146,13 @@ const MentionInput: FC<MentionInputProps> = (
       <View>
         <TextInput
           {...textInputProps}
-          // value={plainText}
           ref={handleTextInputRef}
           multiline
-          {...Platform.OS === 'web' ? {selection} : {}}
+          {...Platform.OS === 'web' ? {selection, value: plainText} : {}}
           onChangeText={onChangeInput}
           onSelectionChange={handleSelectionChange}
         >
-          {Platform.OS !== 'web' && (
+          {Platform.OS === 'web' ? null : (
             <Text>
               {parts.map(({text, partType, data}, index) => partType ? (
                 <Text
