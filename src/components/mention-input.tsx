@@ -146,7 +146,6 @@ const MentionInput: FC<MentionInputProps> = (
       <View>
         <TextInput
           {...textInputProps}
-          value={plainText}
           ref={handleTextInputRef}
           multiline
           {...Platform.OS === 'web' ? {selection} : {}}
