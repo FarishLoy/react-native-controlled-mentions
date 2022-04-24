@@ -149,7 +149,6 @@ const MentionInput: FC<MentionInputProps> = (
           value={plainText}
           ref={handleTextInputRef}
           multiline
-          style={{color: "00FFFFFF"}}
           {...Platform.OS === 'web' ? {selection} : {}}
           onChangeText={onChangeInput}
           onSelectionChange={handleSelectionChange}
@@ -160,12 +159,11 @@ const MentionInput: FC<MentionInputProps> = (
             <Text
               key={`${index}-${data?.trigger ?? 'pattern'}`}
               style={partType.textStyle ?? defaultMentionTextStyle}
-              {...textInputProps}
             >
               {text}
             </Text>
           ) : (
-            <Text {...textInputProps} key={index}>{text}</Text>
+            <Text key={index}>{text}</Text>
           ))}
         </Text>
       </View>
