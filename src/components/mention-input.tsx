@@ -149,6 +149,7 @@ const MentionInput: FC<MentionInputProps> = (
           value={plainText}
           ref={handleTextInputRef}
           multiline
+          style={{color: "00FFFFFF"}}
           {...Platform.OS === 'web' ? {selection} : {}}
           onChangeText={onChangeInput}
           onSelectionChange={handleSelectionChange}
